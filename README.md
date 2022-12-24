@@ -1,9 +1,21 @@
 # Matrix Wall
 
-A JavaScript implementation of The Matrix code wall with falling green Unicode characters on a dark background.
+**The Matrix code wall with falling green Unicode characters on a dark background** implemented using Vanilla JavaScript and provided with options for color and style customization.
 
 * Live: https://swharden.github.io/MatrixWall
 
 [![](matrix.gif)](https://swharden.github.io/MatrixWall)
 
-Originally created by [Erdoğan Bavaş](http://erdoganb.com) in [this folder](https://github.com/erdoganbavas/web-practices/tree/master/matrix) but published without a license [(pending #111)](https://github.com/erdoganbavas/web-practices/pull/111) and demonstrated in [this YouTube video](https://www.youtube.com/watch?v=1d7TzlsOHsI).
+## Quickstart
+
+Add this code anywhere on your site
+
+```html
+<script src="https://swharden.github.io/MatrixWall/matrix.js"></script>
+```
+
+Refer to [`src/div.html`](src/div.html) ([view the web page here](https://swharden.github.io/MatrixWall/div.html)) for advanced configuration options
+
+## Author
+
+Code here was originally created by [Erdoğan Bavaş](http://erdoganb.com) in [this folder](https://github.com/erdoganbavas/web-practices/tree/master/matrix) but published without a license [(pending #111)](https://github.com/erdoganbavas/web-practices/pull/111) and demonstrated in [this YouTube video](https://www.youtube.com/watch?v=1d7TzlsOHsI). This code was adapted by [@swharden](https://github.com/swharden) in late 2022 to add additional options for customization.
