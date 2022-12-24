@@ -35,8 +35,6 @@ if (typeof matrixSettings != "undefined") {
 
 // setup target style
 matrixTarget.style.display = "flex";
-matrixTarget.style.alignItems = "center";
-matrixTarget.style.justifyContent = "center";
 matrixTarget.style.overflow = "hidden";
 matrixTarget.style.setProperty("background-color", background, "important");
 matrixTarget.style.setProperty("color", foreground, "important");
@@ -56,7 +54,7 @@ if (matrixTarget == document.body) {
 
 
 const columnCount = Math.floor(width / characterSize);
-const rowCount = Math.floor(height / characterSize);
+const rowCount = Math.floor(height / characterSize) + 1;
 console.log({ columnCount })
 console.log({ rowCount })
 
