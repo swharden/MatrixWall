@@ -31,7 +31,6 @@ if (typeof matrixSettings != "undefined") {
 }
 
 // setup target style
-matrixTarget.innerHTML = "";
 matrixTarget.style.display = "flex";
 matrixTarget.style.alignItems = "center";
 matrixTarget.style.justifyContent = "center";
@@ -75,7 +74,7 @@ for (let i = 0; i < columnCount; i++) {
     p.style.lineHeight = 1;
     p.style.widows = "30px";
     setupColumn(p);
-    matrixTarget.append(p);
+    matrixTarget.prepend(p);
 }
 
 function setupColumn(p) {
