@@ -1,3 +1,18 @@
+/* The Matrix Wall
+ *
+ * Original Author: 
+ *   Erdoğan Bavaş
+ *   http://erdoganb.com/
+ *   https://github.com/erdoganbavas/web-practices/tree/master/matrix
+ *   https://www.youtube.com/watch?v=1d7TzlsOHsI
+ *   https://erdoganbavas.medium.com/creating-matrix-wall-with-html-css-and-javascript-dc4ea5e23fe7
+ * 
+ * Modified by:
+ *   Scott Harden
+ *   https://swharden.com/
+ *   https://github.com/swharden/MatrixWall
+ */
+
 let background = "#24292f";
 let foreground = "#39b34d";
 
