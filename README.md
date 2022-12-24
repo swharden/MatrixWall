@@ -14,7 +14,15 @@ Add this code anywhere on your site
 <script src="https://swharden.github.io/MatrixWall/matrix.js"></script>
 ```
 
-Refer to [`src/div.html`](src/div.html) ([view the web page here](https://swharden.github.io/MatrixWall/div.html)) for advanced configuration options
+## Customization
+
+* Refer to [`src/div.html`](src/div.html) ([view the web page here](https://swharden.github.io/MatrixWall/div.html)) for advanced configuration options
+
+* Modify your HTML tag so your browser stops offering to translate the Japanese characters
+
+```html
+<html translate="no">
+```
 
 ## Author
 
