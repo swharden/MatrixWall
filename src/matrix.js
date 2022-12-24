@@ -15,6 +15,7 @@
 
 let background = "#24292f";
 let foreground = "#39b34d";
+let characterSize = 28;
 
 let matrixTarget = document.body;
 if (typeof matrixSettings != "undefined") {
@@ -26,6 +27,8 @@ if (typeof matrixSettings != "undefined") {
         background = matrixSettings.background;
     if (matrixSettings.foreground)
         foreground = matrixSettings.foreground;
+    if (matrixSettings.characterSize)
+        characterSize = matrixSettings.characterSize;
 } else {
     console.log("matrix: matrixSettings object not found, using default settings");
 }
@@ -51,7 +54,7 @@ if (matrixTarget == document.body) {
     height = window.innerHeight;
 }
 
-const characterSize = 28;
+
 const columnCount = Math.floor(width / characterSize);
 const rowCount = Math.floor(height / characterSize);
 console.log({ columnCount })

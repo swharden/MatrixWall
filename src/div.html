@@ -40,16 +40,12 @@
 
         <h3>The Matrix wall effect <em>inside a div</em></h3>
 
+        <!-- the outer element has fixed height and shows the matrix -->
         <div id="matrixDiv" class="bg-dark text-light my-5 matrixElement" style="height: 200px;">
+            <!-- the inner element must use absolute positioning -->
             <div style="position: absolute;">
                 <h1 class="text-light shadow-sm" style="font-size: 7em; font-weight: 400;">The Matrix Wall</h1>
             </div>
-        </div>
-
-        <div>
-            <a href="https://github.com/swharden/MatrixWall">
-                https://github.com/swharden/MatrixWall
-            </a>
         </div>
 
     </div>
@@ -60,11 +56,18 @@
             target: document.getElementById("matrixDiv"),
             background: "#67217a",
             foreground: "#9a4993",
+            characterSize: 15,
         };
     </script>
 
     <!-- start the matrix wall -->
-    <script type="text/javascript" src="matrix.js?2"></script>
+    <script type="text/javascript" src="matrix.js?3"></script>
+
+    <footer>
+        <a href="https://github.com/swharden/MatrixWall">
+            https://github.com/swharden/MatrixWall
+        </a>
+    </footer>
 
 </body>
 
