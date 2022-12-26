@@ -94,7 +94,7 @@ function setupColumn(p) {
                 { opacity: '0', color: matrixSettings.highlight, offset: 0 }, // start transparent
                 { opacity: '1', color: matrixSettings.highlight, offset: .05 }, // fade-in using the highlight color
                 { opacity: '1', color: matrixSettings.foreground, offset: .2 }, // fade to standard color
-                { opacity: '0.05', color: matrixSettings.foreground, offset: 1 }, // fade out but not completely
+                { opacity: '0.03', color: matrixSettings.foreground, offset: 1 }, // take extra time on that last bit
             ],
             {
                 duration: tailLength,
