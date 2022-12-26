@@ -45,4 +45,4 @@ Add this code anywhere on your site
 
 ## Author
 
-Code here was originally created by [Erdoğan Bavaş](http://erdoganb.com) in [this folder](https://github.com/erdoganbavas/web-practices/tree/master/matrix) but published without a license [(pending #111)](https://github.com/erdoganbavas/web-practices/pull/111) and demonstrated in [this YouTube video](https://www.youtube.com/watch?v=1d7TzlsOHsI). This code was adapted by [@swharden](https://github.com/swharden) in late 2022 to add additional options for customization.
+This project extends work by [Erdoğan Bavaş](http://erdoganb.com) which was [shared on GitHub](https://github.com/erdoganbavas/web-practices/tree/master/matrix), [demonstrated on YouTube](https://www.youtube.com/watch?v=1d7TzlsOHsI), and [summarized on Medium](https://erdoganbavas.medium.com/creating-matrix-wall-with-html-css-and-javascript-dc4ea5e23fe7)
