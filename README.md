@@ -4,6 +4,7 @@
 
 * Matrix Wall demo: https://swharden.github.io/MatrixWall
 * Customized demo: https://swharden.github.io/MatrixWall/div.html
+* 💡 Tip: Press `F11` for fullscreen then `F5` to refresh
 
 [![](dev/matrix-wall-screenshot.gif)](https://swharden.github.io/MatrixWall)
 
