@@ -83,6 +83,9 @@ function setupColumn(p) {
     const isFirstTimeFalling = p.children.length == 0;
     const firstTimeDelay = isFirstTimeFalling ? fallDelay * 10 : 0; // helps randomize initial state
 
+    p.style.position = "relative";
+    p.style.top = - Math.random() + "em"; // random vertical shift
+
     for (let j = 0; j < rowCount; j++) {
         const span = isFirstTimeFalling
             ? createColumnElement()
