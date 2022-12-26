@@ -27,7 +27,9 @@ Add this code anywhere on your site
         target: document.getElementById("matrixDiv"),
         background: "#67217a",
         foreground: "#9a4993",
+        highlight: "#ba5db2",
         characterSize: 15,
+        speed: .5,
     };
 </script>
 <script src="https://swharden.github.io/MatrixWall/matrix.js"></script>
