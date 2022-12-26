@@ -13,99 +13,104 @@
  *   https://github.com/swharden/MatrixWall
  */
 
-let background = "#24292f";
-let foreground = "#39b34d";
-let characterSize = 28;
+// set default values for items not defined in matrix settings object
+if (typeof matrixSettings == "undefined") matrixSettings = {};
+matrixSettings.background = matrixSettings.background ?? "#24292f";
+matrixSettings.foreground = matrixSettings.foreground ?? "#39b34d";
+matrixSettings.highlight = matrixSettings.highlight ?? "#c3ebc9";
+matrixSettings.characterSize = matrixSettings.characterSize ?? 28;
+matrixSettings.target = matrixSettings.target ?? document.body;
+console.log({ matrixSettings });
 
-let matrixTarget = document.body;
-if (typeof matrixSettings != "undefined") {
-    console.log("matrix: loading custom settings from matrixSettings");
-    console.log({ matrixSettings });
-    if (matrixSettings.target)
-        matrixTarget = matrixSettings.target;
-    if (matrixSettings.background)
-        background = matrixSettings.background;
-    if (matrixSettings.foreground)
-        foreground = matrixSettings.foreground;
-    if (matrixSettings.characterSize)
-        characterSize = matrixSettings.characterSize;
-} else {
-    console.log("matrix: matrixSettings object not found, using default settings");
+styleTargetElement();
+createLetters();
+
+function getRowCount() {
+    let height = matrixSettings.target == document.body
+        ? window.innerHeight
+        : matrixSettings.target.getBoundingClientRect().height;
+    return Math.floor(height / matrixSettings.characterSize) + 1;
 }
 
-// setup target style
-matrixTarget.style.display = "flex";
-matrixTarget.style.overflow = "hidden";
-matrixTarget.style.setProperty("background-color", background, "important");
-matrixTarget.style.setProperty("color", foreground, "important");
-matrixTarget.style.padding = "0px";
-matrixTarget.style.margin = "0px";
-
-// get dimensions
-let width = matrixTarget.getBoundingClientRect().width;
-let height = matrixTarget.getBoundingClientRect().height;
-
-// change some things if we are drawing in the body
-if (matrixTarget == document.body) {
-    document.body.style.height = "100%";
-    width = window.innerWidth;
-    height = window.innerHeight;
+function getColumnCount() {
+    const width = matrixSettings.target == document.body
+        ? window.innerWidth
+        : matrixSettings.target.getBoundingClientRect().width;
+    return Math.floor(width / matrixSettings.characterSize);
 }
 
+function createLetters() {
+    for (let i = 0; i < getColumnCount(); i++) {
+        const p = document.createElement('p');
+        p.style.lineHeight = 1;
+        p.style.widows = "30px";
+        setupColumn(p);
+        matrixSettings.target.prepend(p);
+    }
+}
 
-const columnCount = Math.floor(width / characterSize);
-const rowCount = Math.floor(height / characterSize) + 1;
-console.log({ columnCount })
-console.log({ rowCount })
+function styleTargetElement() {
+    matrixSettings.target.style.display = "flex";
+    matrixSettings.target.style.overflow = "hidden";
+    matrixSettings.target.style.setProperty("background-color", matrixSettings.background, "important");
+    matrixSettings.target.style.setProperty("color", matrixSettings.foreground, "important");
+    matrixSettings.target.style.padding = "0px";
+    matrixSettings.target.style.margin = "0px";
+    if (matrixSettings.target == document.body) {
+        document.body.style.height = "100%";
+        document.body.style.height = "100%";
+    }
+}
 
 function createColumnElement() {
     const el = document.createElement('span');
     el.style.display = "block";
-    el.style.fontSize = characterSize + "px";
+    el.style.fontSize = matrixSettings.characterSize + "px";
     el.style.textAlign = "center";
-    el.style.width = characterSize + "px";
-    el.style.height = characterSize + "px";
+    el.style.width = matrixSettings.characterSize + "px";
+    el.style.height = matrixSettings.characterSize + "px";
     el.style.opacity = 0;
     el.style.fontFamily = "Consolas, Helvetica, sans-serif";
     return el;
 }
 
-for (let i = 0; i < columnCount; i++) {
-    const p = document.createElement('p');
-    p.style.lineHeight = 1;
-    p.style.widows = "30px";
-    setupColumn(p);
-    matrixTarget.prepend(p);
-}
-
 function setupColumn(p) {
-    const delay = random(100, 300);
-    const duration = random(100, 2000);
-    const hasChildren = p.children.length > 0;
+
+    const columnResetDelay = random(100, 500);
+    const tailLength = random(500, 2000);
+    const fallDelay = random(30, 200);
+    const rowCount = getRowCount();
+    const isFirstTimeFalling = p.children.length == 0;
+    const firstTimeDelay = isFirstTimeFalling ? fallDelay * 10 : 0; // helps randomize initial state
 
     for (let j = 0; j < rowCount; j++) {
-        const span = hasChildren
-            ? p.children.item(j)
-            : createColumnElement();
+        const span = isFirstTimeFalling
+            ? createColumnElement()
+            : p.children.item(j);
 
         span.innerText = getRandomChar();
-        const animation = span.animate([
-            { opacity: '1' },
-            { opacity: '0.05' }
-        ], {
-            duration: duration,
-            delay: delay + (j * 75), // add delay for every char
-            fill: 'forwards' // keep element with the last state of anim
-        });
+        const animation = span.animate(
+            [
+                { opacity: '0', color: matrixSettings.highlight, offset: 0 }, // start transparent
+                { opacity: '1', color: matrixSettings.highlight, offset: .05 }, // fade-in using the highlight color
+                { opacity: '1', color: matrixSettings.foreground, offset: .2 }, // fade to standard color
+                { opacity: '0.05', color: matrixSettings.foreground, offset: 1 }, // fade out but not completely
+            ],
+            {
+                duration: tailLength,
+                delay: columnResetDelay + (j * fallDelay) + firstTimeDelay,
+                fill: 'forwards'
+            }
+        );
 
-        // rebuild column after last char disappear
-        if (j === rowCount - 1) {
+        const isBottomRow = j === rowCount - 1;
+        if (isBottomRow) {
             animation.onfinish = () => {
                 setupColumn(p);
             };
         }
 
-        if (!hasChildren) {
+        if (isFirstTimeFalling) {
             p.appendChild(span);
         }
     }
@@ -123,6 +128,8 @@ function getRandomChar() {
         [0x3041, 0x30ff], // Japanese (extra weight)
 
         [0x0030, 0x0031], // 0s and 1s
+        [0x0030, 0x0031], // 0s and 1s (extra weight)
+        [0x0030, 0x0031], // 0s and 1s (extra weight)
 
         [0x0030, 0x0039], // English numbers
         [0x0041, 0x005A], // English uppercase letters
