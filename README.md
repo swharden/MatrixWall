@@ -2,9 +2,10 @@
 
 **The Matrix code wall with falling green Unicode characters on a dark background** implemented using Vanilla JavaScript and provided with options for color and style customization.
 
-* Live: https://swharden.github.io/MatrixWall
+* Matrix Wall demo: https://swharden.github.io/MatrixWall
+* Customized demo: https://swharden.github.io/MatrixWall/div.html
 
-[![](matrix.gif)](https://swharden.github.io/MatrixWall)
+[![](dev/matrix-wall-screenshot.gif)](https://swharden.github.io/MatrixWall)
 
 ## Quickstart
 
