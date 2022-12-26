@@ -29,7 +29,7 @@ function getRowCount() {
     let height = matrixSettings.target == document.body
         ? window.innerHeight
         : matrixSettings.target.getBoundingClientRect().height;
-    return Math.floor(height / matrixSettings.characterSize) + 1;
+    return Math.floor(height / matrixSettings.characterSize) + 2; // extend off the screen one character in each direction
 }
 
 function getColumnCount() {
