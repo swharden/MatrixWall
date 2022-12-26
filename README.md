@@ -43,6 +43,6 @@ Add this code anywhere on your site
 <html translate="no">
 ```
 
-## Author
+## Attribution
 
 This project extends work by [Erdoğan Bavaş](http://erdoganb.com) which was [shared on GitHub](https://github.com/erdoganbavas/web-practices/tree/master/matrix), [demonstrated on YouTube](https://www.youtube.com/watch?v=1d7TzlsOHsI), and [summarized on Medium](https://erdoganbavas.medium.com/creating-matrix-wall-with-html-css-and-javascript-dc4ea5e23fe7)
